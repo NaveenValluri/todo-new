@@ -1,46 +1,31 @@
-# Your custom Twilio Flex Plugin
+# CRON EXPRESSION PARSER
 
-Twilio Flex Plugins allow you to customize the appearance and behavior of [Twilio Flex](https://www.twilio.com/flex). If you want to learn more about the capabilities and how to use the API, check out our [Flex documentation](https://www.twilio.com/docs/flex).
+## Description
 
-## Setup
+command line application or script which parses a cron string and expands each field
+to show the times at which it will run. 
 
-Make sure you have [Node.js](https://nodejs.org) as well as [`npm`](https://npmjs.com) installed.
+The output should be formatted as a table with the field name taking the first 14 columns and
+the times as a space-separated list following it.
 
-Afterwards, install the dependencies by running `npm install`:
+For eg:
+* For "*/15 0 1,15 * 1-5 /usr/bin/find"
+* Response should be 
+    minute 0 15 30 45
+    hour 0
+    day of month 1 15
+    month 1 2 3 4 5 6 7 8 9 10 11 12
+    day of week 1 2 3 4 5
+    command /usr/bin/find
 
-```bash
-cd 
+## Prerequisite
 
-# If you use npm
-npm install
-```
+* Ruby 2.5.7 or above
 
-## Development
+## Instructions
 
-In order to develop locally, you can use the Webpack Dev Server by running:
-
-```bash
-npm start
-```
-
-This will automatically start up the Webpack Dev Server and open the browser for you. Your app will run on `http://localhost:8080`. If you want to change that you can do this by setting the `PORT` environment variable:
-
-```bash
-PORT=3000 npm start
-```
-
-When you make changes to your code, the browser window will be automatically refreshed.
-
-## Deploy
-
-Once you are happy with your plugin, you have to bundle it in order to deploy it to Twilio Flex.
-
-Run the following command to start the bundling:
-
-```bash
-npm run build
-```
-
-Afterwards, you'll find in your project a `build/` folder that contains a file with the name of your plugin project. For example, `plugin-example.js`. Take this file and upload it into the Assets part of your Twilio Runtime.
-
-Note: Common packages like `React`, `ReactDOM`, `Redux` and `ReactRedux` are not bundled with the build because they are treated as external dependencies so the plugin will depend on Flex to provide them globally.
+* Navigate to deliveroo_coding_task folder
+* run command 
+  <pre>ruby run.rb "1 1 1 1 1 command"</pre>
+* For test cases, run
+  <pre>ruby cron_expression_parser_test.rb</pre>
